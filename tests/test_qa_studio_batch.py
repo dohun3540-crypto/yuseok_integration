@@ -5,6 +5,8 @@ import sys
 from copy import deepcopy
 from pathlib import Path
 
+import pytest
+
 from leadtime_guardian.qa.audit import load_json_strict
 from leadtime_guardian.qa.studio_batch import audit_studio_case_batch
 
@@ -158,3 +160,22 @@ def test_combined_cli_rejects_comparing_archived_c001_to_three_new_jobs():
     assert output["python_business_status"] == "NOT_VERIFIED"
     assert "MULTI_JOB_B0_NOT_INTEGRATED_C001" in codes(output)
     assert output["release_or_merge_authorized"] is False
+
+
+def test_unhashable_reported_provenance_level_fails_closed():
+    for value in ([], {}, ["STUDIO_EXPORT_USER_SUPPLIED"]):
+        raw = reported()
+        raw["provenance_level"] = value
+        result = audit_studio_case_batch(raw, expected_case_id="C001")
+        assert result["qa_status"] == "FAIL"
+        assert "UNVERIFIED_BATCH_OBSERVATION_SOURCE" in codes(result)
+
+
+@pytest.mark.parametrize("invalid_level", [None, 0, False, {"nested": {"items": []}}])
+def test_reported_provenance_nonstring_is_rejected_safely(invalid_level):
+    raw = reported()
+    raw["provenance_level"] = invalid_level
+    result = audit_studio_case_batch(raw, expected_case_id="C001")
+    assert result["qa_status"] == "FAIL"
+    assert "UNVERIFIED_BATCH_OBSERVATION_SOURCE" in codes(result)
+    assert result["release_or_merge_authorized"] is False

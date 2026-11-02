@@ -1,0 +1,239 @@
+{
+  "source_commits": {
+    "qa_baseline": "ece3a7dcc254b5c7a14c72792750170346419eb8",
+    "qa_parallel": "d244d6a791600b8f6ea23097fe88f6ca50834a2b",
+    "team2": "e9b9992b593a42d427ff1bbadeb9a9866ca593bd",
+    "team3": "a925103077173b37d1cefcd6a9576ae644dc2040"
+  },
+  "qa_original_pr_status": "NOT_VERIFIED: copy repository returned 404; matching commits available in integration repository",
+  "team2_pr": {
+    "number": 12,
+    "state": "open",
+    "merged": false
+  },
+  "team3_pr": {
+    "number": 13,
+    "state": "open",
+    "merged": false
+  },
+  "core_comparison": [
+    {
+      "path": "src/leadtime_guardian/engine.py",
+      "team2_blob": "bc0ecdc3df55c0ad95dc8195f1631579aa95d866",
+      "baseline_blob": "bc0ecdc3df55c0ad95dc8195f1631579aa95d866",
+      "identical": true
+    },
+    {
+      "path": "src/leadtime_guardian/studio_adapter.py",
+      "team2_blob": "cd24c70f06869a8646e3e56c3ec2e0461727feef",
+      "baseline_blob": "cd24c70f06869a8646e3e56c3ec2e0461727feef",
+      "identical": true
+    },
+    {
+      "path": "src/leadtime_guardian/studio_integration.py",
+      "team2_blob": "e4c3b81187e31822838eea53ea20f1e1bed7c1ea",
+      "baseline_blob": "e4c3b81187e31822838eea53ea20f1e1bed7c1ea",
+      "identical": true
+    },
+    {
+      "path": "src/leadtime_guardian/strict_json.py",
+      "team2_blob": "342357bb271f0e96900effb6401b73a19c4a41fc",
+      "baseline_blob": "342357bb271f0e96900effb6401b73a19c4a41fc",
+      "identical": true
+    },
+    {
+      "path": "src/leadtime_guardian/provenance.py",
+      "team2_blob": "65a4d2a2b27bacf5d0acc359322b528f1b6d7814",
+      "baseline_blob": "65a4d2a2b27bacf5d0acc359322b528f1b6d7814",
+      "identical": true
+    },
+    {
+      "path": "src/leadtime_guardian/agents_api.py",
+      "team2_blob": "926070e3bc11a1775170496e26b432089e8b22a3",
+      "baseline_blob": "926070e3bc11a1775170496e26b432089e8b22a3",
+      "identical": true
+    }
+  ],
+  "selected_imports": [
+    {
+      "path": "qa/README.md",
+      "source_blob": "b6c7e6354edd25eb6abdda8752910f020632d586",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "4d381e6b4a1353214baa61865144f26976993c25c19fc8cacc98ef3a95d696c6",
+      "local_change": "Added current integration notice; historical handoff content retained"
+    },
+    {
+      "path": "qa/__init__.py",
+      "source_blob": "d7b7edad9b0efd878ffeb76309a2ad18337738f4",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "f7db350610b9fcbf6ad0e5e65a85ea0d870a6a6423a42832753bd4aeb6e3c498",
+      "local_change": "none"
+    },
+    {
+      "path": "qa/gold_candidates/SYN-C001/PDF_EVIDENCE_MATRIX.csv",
+      "source_blob": "d51830544771439be408488a02ea843c60e77479",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "ea636105560009aa81cc90d0c63410282a201186407ae9fcf273ebdab1ef1b24",
+      "local_change": "none"
+    },
+    {
+      "path": "qa/gold_candidates/SYN-C001/REVIEW_GUIDE.md",
+      "source_blob": "69b630e6998284a0b98c6d0efa9fdf7b05a7ff93",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "9457026978af716db7bd7f4993ba29dbcc41b5b9df6a19263da14dd4e45faa58",
+      "local_change": "none"
+    },
+    {
+      "path": "qa/gold_candidates/SYN-C001/candidate.v1.json",
+      "source_blob": "721cb76a6a3b9fd07e8ea393ab7dabef43682397",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "c96468674701b1336aa981260ce3c1afba8df70a90652a87ab2796ae609e1103",
+      "local_change": "none"
+    },
+    {
+      "path": "qa/inventory.py",
+      "source_blob": "ee66c4406e0c45e921c90d1ad46d8b97cd93e58a",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "2dbf4f1966e329834f7caef911bf4d27c6404c10ed0ee6405a11489f6f730194",
+      "local_change": "finite numeric overflow rejection"
+    },
+    {
+      "path": "qa/requirements.txt",
+      "source_blob": "6b430ab32205a6e4d4daac24ea5df4189331a6e0",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "4a8aa0a7ad5f54f8717635032926d04389842094a301dc02560263876ca9dcaf",
+      "local_change": "none"
+    },
+    {
+      "path": "qa/review_records.py",
+      "source_blob": "842b886f8de5ef0fe79c32ba0d00c0a9405eb5cb",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "8aea4c2f188b38bda4fa0b18a64e9b79b5d2986e4a1a29335ef6bd983a19a1cf",
+      "local_change": "none"
+    },
+    {
+      "path": "qa/templates/CASE_COVERAGE_MATRIX.csv",
+      "source_blob": "a7983afd5f6d93978274cb35c15ad59a335a8c46",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "b7c5f1c38d47048b6a0d72a2db4ee60a7689ba9eab05bc8a9f3a0e3eaeafadc1",
+      "local_change": "none"
+    },
+    {
+      "path": "qa/templates/HUMAN_REVIEW_LOG.csv",
+      "source_blob": "55dc54a58f04e4cff17346d459f62ec3d34b8415",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "5ab8fe8255f2580b8615a30623b278a376fb05d1963df9cdde83374350af7005",
+      "local_change": "none"
+    },
+    {
+      "path": "qa/xlsx_snapshot.py",
+      "source_blob": "acb98567e11673bfdecc943f61bce7807fd25112",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "c861c6f50883dc7588b9d51a7e5c66955eeed1074d77ef5b000a949647cead18",
+      "local_change": "none"
+    },
+    {
+      "path": "tests/qa/conftest.py",
+      "source_blob": "c9833fc94ad38081ccdbd34d67aae9f1f4a750bf",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "cc9ed25724cb54d41991d2d0cc6f5382e0a44205f1e19cf2bba973ba2a08d0cd",
+      "local_change": "none"
+    },
+    {
+      "path": "tests/qa/test_inventory.py",
+      "source_blob": "f635bec4f5b22b62f55f9fc326f6240f75924293",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "358258e863f6e40b691f969767274cba3429ca038df5734dd47c5377b4ce4f47",
+      "local_change": "none"
+    },
+    {
+      "path": "tests/qa/test_inventory_snapshot.py",
+      "source_blob": "b2f4e351dd755f97e0b248a233671407d6247f8b",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "8026dbc75864bb8457f9558205b4bcdbc33820de13cbca2e68007337ef32496e",
+      "local_change": "none"
+    },
+    {
+      "path": "tests/qa/test_review_records.py",
+      "source_blob": "ccdd7f00c37c94d2ec304c9a1b16bceafb679f31",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "e2242686fe035a2c32c15a3b6dfe4dc2b000cc30a1523114b5d58324b55ccdd3",
+      "local_change": "none"
+    },
+    {
+      "path": "tests/qa/test_xlsx_snapshot.py",
+      "source_blob": "3ed899c3071a8890b9fceb6b4b1ecd1dd36c0f75",
+      "source_commit": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "integrated_sha256": "3c688fcd8878377e2ed3c9c36b3c9d523cb63082bb35e168a8ff941c30f1461e",
+      "local_change": "none"
+    },
+    {
+      "path": "tests/test_qa_input_delivery_json_types.py",
+      "source_blob": "4fd2611fe08e1c7a87776c3d59d75ee4c1d724f2",
+      "source_commit": "d244d6a791600b8f6ea23097fe88f6ca50834a2b"
+    }
+  ],
+  "immutable_existing_files_unchanged": true,
+  "upload_entries": [
+    {
+      "archive": "LeadTime_Guardian_Git_Integration_Package (1).zip",
+      "path": "01_Git_Only_Handoff.docx",
+      "sha256": "1c0144d55260a19d80c6cb0fc0668a94154b273a1f381abaa88f6d05a1269e0b",
+      "duplicate": false
+    },
+    {
+      "archive": "LeadTime_Guardian_Git_Integration_Package (1).zip",
+      "path": "02_Git_Only_Prompt.txt",
+      "sha256": "4c1ae07bbc67bb2bf4e0f5c32686f79b371f299e2c325a4dbcb6764ac8edab2e",
+      "duplicate": false
+    },
+    {
+      "archive": "LeadTime_Guardian_Git_Integration_Package (1).zip",
+      "path": "03_Studio_V6_Reference_Only.json",
+      "sha256": "931933760e35799f88c4272bbd0c1d1b9503ca2dea9e552ac70823b5a6a0abe9",
+      "duplicate": false
+    },
+    {
+      "archive": "LeadTime_Guardian_Git_Integration_Package (1).zip",
+      "path": "04_Team2_Report.pdf",
+      "sha256": "9c396a322c81c021669b7dee6ebc54fd191fa1b734d6f2b7def0e9e861382c0f",
+      "duplicate": false
+    },
+    {
+      "archive": "LeadTime_Guardian_Git_Integration_Package (1).zip",
+      "path": "05_Team3_Status.docx",
+      "sha256": "4b33a881f02b7a911a55c9efa04168aa10fc27c2507b154d8b9257e91289d493",
+      "duplicate": false
+    },
+    {
+      "archive": "LeadTime_Guardian_Git_Integration_Package (1).zip",
+      "path": "00_CHECKSUMS.txt",
+      "sha256": "c1d2b810d0fd318996fcd92cf3f6bebd7fcb52476c6ceb2838c1b3ad91584cee",
+      "duplicate": false
+    },
+    {
+      "archive": "LeadTime_Guardian_Git_Only_Instructions (1).zip",
+      "path": "01_Git_Only_Handoff.docx",
+      "sha256": "1c0144d55260a19d80c6cb0fc0668a94154b273a1f381abaa88f6d05a1269e0b",
+      "duplicate": true
+    },
+    {
+      "archive": "LeadTime_Guardian_Git_Only_Instructions (1).zip",
+      "path": "02_Git_Only_Prompt.txt",
+      "sha256": "4c1ae07bbc67bb2bf4e0f5c32686f79b371f299e2c325a4dbcb6764ac8edab2e",
+      "duplicate": true
+    },
+    {
+      "archive": "LeadTime_Guardian_Git_Only_Instructions (1).zip",
+      "path": "00_CHECKSUMS.txt",
+      "sha256": "c1d2b810d0fd318996fcd92cf3f6bebd7fcb52476c6ceb2838c1b3ad91584cee",
+      "duplicate": true
+    }
+  ],
+  "qa_function_selection": {
+    "path": "src/leadtime_guardian/qa/input_delivery.py",
+    "baseline_blob": "f56825a1a6202cc468e1f86c059b0d8dffa6e8de",
+    "parallel_blob": "da61abb9dc2a2381ef611f3735265168e5539d63",
+    "decision": "Select recursive comparator, preserve cycle/depth and signed zero protection; do not revert baseline studio_qa_adapter"
+  }
+}

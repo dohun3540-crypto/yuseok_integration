@@ -69,6 +69,7 @@ def audit_b0_e1_readiness(b0: Any, e1: Any) -> dict[str, Any]:
             add("SAVED_CONFIG_NOT_AUTHENTICATED", side)
         originals = raw.get("source_pdfs")
         mapping = {}
+        source_file_ids: set[str] = set()
         if not isinstance(originals, list) or len(originals) != 3:
             add("THREE_PDF_SOURCES_NOT_OBSERVED", side)
         else:
@@ -89,6 +90,9 @@ def audit_b0_e1_readiness(b0: Any, e1: Any) -> dict[str, Any]:
                     continue
                 if name in mapping:
                     add("DUPLICATE_PDF_FILENAME", side, severity="ERROR")
+                if fid in source_file_ids:
+                    add("DUPLICATE_SOURCE_FILE_ID", side, severity="ERROR")
+                source_file_ids.add(fid)
                 mapping[name] = (digest.lower(), kind)
             if {x[1] for x in mapping.values()} != REQUIRED_TYPES:
                 add("PDF_DOCUMENT_TYPE_SET_INCOMPLETE", side)
@@ -96,6 +100,7 @@ def audit_b0_e1_readiness(b0: Any, e1: Any) -> dict[str, Any]:
         if not isinstance(steps, dict):
             add("STEP_ARTIFACTS_NOT_PROVIDED", side)
         else:
+            operational_step_ids: set[str] = set()
             for step in sorted(REQUIRED_STEPS):
                 data = steps.get(step)
                 if (not isinstance(data, dict)
@@ -104,6 +109,23 @@ def audit_b0_e1_readiness(b0: Any, e1: Any) -> dict[str, Any]:
                         or not isinstance(data.get("original_sha256"), str)
                         or not HEX64.fullmatch(data["original_sha256"])):
                     add("RAW_STEP_ARTIFACT_NOT_VERIFIED:" + step, side)
+                    continue
+                # IndependentQA may run as a separate QA Studio Job.
+                # Only operational stages must bind to this side's Job/Config.
+                if step != "IndependentQA":
+                    sid = data["step_run_id"]
+                    if sid in operational_step_ids:
+                        add("DUPLICATE_OPERATIONAL_STEP_ID", side, severity="ERROR")
+                    operational_step_ids.add(sid)
+                    if any(
+                        field in data and data[field] != expected
+                        for field, expected in (
+                            ("job_id", job), ("config_id", config),
+                            ("config_version", version),
+                        )
+                    ):
+                        add("OPERATIONAL_STEP_RUN_BINDING_MISMATCH:" + step,
+                            side, severity="ERROR")
         if isinstance(steps, dict):
             norm = steps.get("NormalizeDocuments")
             if (isinstance(norm, dict)
@@ -180,7 +202,8 @@ def compare_normalized_field_values(
         return result
 
     if (not isinstance(readiness, dict)
-            or readiness.get("case_id") != "C001"
+            or not isinstance(readiness.get("case_id"), str)
+            or not readiness["case_id"].strip()
             or readiness.get("pdf_sha256_sets_equal") is not True
             or readiness.get("eligibility") != "BLOCKED"
             or any(x.get("severity") == "ERROR"
@@ -200,7 +223,8 @@ def compare_normalized_field_values(
     for side, content in (("B0", b0_raw), ("E1", e1_raw)):
         if not isinstance(content, dict):
             return issue(side + "_NORMALIZED_RAW_NOT_OBJECT")
-        if "case_id" in content and content["case_id"] != "C001":
+        if ("case_id" in content
+                and content["case_id"] != readiness["case_id"]):
             return issue(side + "_NORMALIZED_CASE_ID_MISMATCH")
         if original_raw_sha256_by_side is not None:
             expected_binding = readiness["normalized_job_metadata_by_side"][side]

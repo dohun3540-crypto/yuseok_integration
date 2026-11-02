@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "scope": "원본 기계 검사만; 사람 검수·성능 평가 아님",
+  "created_at": "2026-11-02T13:02:51.934194+00:00",
+  "archive_sha256": "a3f4ed1cefee4ebea3a4b94f9408f8a039bf042bd651a3a9222a5162c22149dc",
+  "documents": 60,
+  "status_counts": {
+    "PASS": 60,
+    "FAIL": 0,
+    "BLOCKED": 0
+  },
+  "duplicate_hashes": {},
+  "human_review": "NOT_RUN",
+  "studio_evaluation": "NOT_RUN",
+  "visual_review": "NOT_RUN"
+}

@@ -1,12 +1,13 @@
 """Pure QA functions. No network, purchases, file writes or engine mutations."""
 from __future__ import annotations
 
-import json
 import re
 from datetime import date
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any
+
+from leadtime_guardian.strict_json import loads_strict
 
 PROVENANCE = frozenset({
     "REAL_STUDIO_RUN", "SDK_HTTP_MOCK", "FAKE_CLIENT_TEST",
@@ -15,19 +16,8 @@ PROVENANCE = frozenset({
 
 
 def load_json_strict(data: str | bytes) -> Any:
-    """Reject duplicate JSON keys and non-standard numeric constants."""
-    def pairs(value: list[tuple[str, Any]]) -> dict[str, Any]:
-        result: dict[str, Any] = {}
-        for key, item in value:
-            if key in result:
-                raise ValueError(f"duplicate JSON key: {key}")
-            result[key] = item
-        return result
-
-    def constant(value: str) -> None:
-        raise ValueError(f"non-finite JSON constant: {value}")
-
-    return json.loads(data, object_pairs_hook=pairs, parse_constant=constant)
+    """Use the V6 boundary, including finite floats and valid UTF-8."""
+    return loads_strict(data)
 
 
 def issue(code: str, field: str, reason: str, severity: str = "ERROR") -> dict[str, str]:
@@ -161,7 +151,7 @@ def audit_provenance(record: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(record, dict):
         return {"qa_status": "FAIL", "issues": [issue("INVALID_PROVENANCE", "$", "object required")]}
     kind = record.get("provenance")
-    if kind not in PROVENANCE:
+    if not isinstance(kind, str) or kind not in PROVENANCE:
         issues.append(issue("UNKNOWN_PROVENANCE", "provenance", "unrecognized source type"))
     if kind == "REAL_STUDIO_RUN":
         for field in ("agent_id", "config_id", "job_id"):

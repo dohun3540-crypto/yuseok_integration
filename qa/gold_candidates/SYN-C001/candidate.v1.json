@@ -1,0 +1,44 @@
+{
+  "case_id": "SYN-C001",
+  "candidate_version": "C001-candidate-v1",
+  "label_status": "AI_CANDIDATE",
+  "human_reviewed": false,
+  "team_approved": false,
+  "reviewed_by": null,
+  "reviewed_at": null,
+  "eligible_for_official_metrics": false,
+  "gold_frozen": false,
+  "gold_sha256": null,
+  "source_git_sha": "8558bdc2ee0f82d0e7c02c0adff7d1c0155564df",
+  "provenance": "GitHub 원본 PDF를 채팅 자료로 가져와 제공된 페이지 텍스트와 표를 AI가 대조한 후보. 사람이 PDF 이미지를 검수한 기록이 아니며 Studio 예측도 아니다. 기존 DRAFT를 먼저 읽은 뒤 대조했으므로 맹검 독립 정답 작성이 아니다.",
+  "draft_reference": "data/cases/SYN-C001/extraction_gold.DRAFT.json",
+  "draft_blob_sha": "959bebf23a34d6d76e5f2724785634188165cf35",
+  "draft_comparison": "문서 필드 후보는 읽은 DRAFT와 일치한다. 기계 diff는 NOT_RUN. DRAFT warnings/evidence 빈 배열은 정답 근거로 채택하지 않는다.",
+  "sources": [
+    {"document_id":"PO-DOC","filename":"SYN-C001_purchase_order.pdf","sha256":"9246b69363e3cec3dca7654b14bc7facdb0f762e8ae72c42594f38efabadc930","source_page":1,"sha_source":"원본 다운로드 바이트 준비 결과"},
+    {"document_id":"NOTICE-DOC","filename":"SYN-C001_delivery_notice.pdf","sha256":"7a5f7b8f025a79a0751a6b6c41e21292fc62c1c02cdd071048e38a66e4bf7f2b","source_page":1,"sha_source":"원본 다운로드 바이트 준비 결과"},
+    {"document_id":"QUOTE-DOC","filename":"SYN-C001_quotation.pdf","sha256":"35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551","source_page":1,"sha_source":"원본 다운로드 바이트 준비 결과"}
+  ],
+  "document_class_gold_candidate": {"PO-DOC":"purchase_order","NOTICE-DOC":"delivery_notice","QUOTE-DOC":"quotation"},
+  "field_gold_candidate": [
+    {"document_id":"PO-DOC","document_type":"purchase_order","po_id":"PO1","supplier_id":null,"original_delivery":"2026-11-03","revised_delivery":null,"items":[{"product_id":"A","receipt_id":"R1","quantity":100,"unit":"EA"}],"quote":null},
+    {"document_id":"NOTICE-DOC","document_type":"delivery_notice","po_id":"PO1","supplier_id":null,"original_delivery":"2026-11-03","revised_delivery":"2026-11-08","items":[{"product_id":"A","receipt_id":"R1","quantity":100,"unit":"EA"}],"quote":null},
+    {"document_id":"QUOTE-DOC","document_type":"quotation","po_id":"PO1","supplier_id":"S1","original_delivery":null,"revised_delivery":null,"items":[{"product_id":"A","receipt_id":null,"quantity":60,"unit":"EA"}],"quote":{"quote_id":"Q1","supplier_id":"S1","product_id":"A","capacity":60,"arrival_date":"2026-11-04","unit_price":"1000.00","shipping_cost":"500","currency":"KRW"}}
+  ],
+  "expected_warning_rules_candidate": [
+    {"rule":"PO_ID_CONFLICT","expected":false,"reason":"세 문서의 관련 PO가 모두 PO1이다."},
+    {"rule":"QUANTITY_CONFLICT","expected":false,"reason":"발주 및 변경 대상 100 EA와 대체 공급 가능량 60 EA는 서로 다른 업무 사실이다. 이 차이만으로 충돌을 만들지 않는다."},
+    {"rule":"DATE_CONFLICT","expected":false,"reason":"기존 납기·변경 납기·대체 견적 입고일은 역할이 다르며 날짜 차이 자체는 모순이 아니다."},
+    {"rule":"OPTIONAL_FIELD_FALSE_WARNING","expected":false,"reason":"발주서/통보서 공급업체 미기재 및 문서종에 적용되지 않는 날짜/견적 정보 부재만으로 경고하지 않는다."},
+    {"rule":"EVIDENCE_MISSING","expected":null,"reason":"실제 예측 Evidence와 전달 경로를 아직 비교하지 않아 경고 기대값 미확정."}
+  ],
+  "expected_business_status": null,
+  "expected_block_reason": null,
+  "business_status_review": "NOT_VERIFIED",
+  "business_status_reason": "이 후보는 PDF 사실만 검토한다. trusted_base_case와 독립 계산 및 실제 Python 실행을 이 회차에서 대조하지 않았으므로 업무 정상 판정을 확정하지 않는다.",
+  "execution_kind": null,
+  "studio_job_id": null,
+  "studio_config_id": null,
+  "evidence_matrix": "PDF_EVIDENCE_MATRIX.csv",
+  "notes": ["모든 근거는 각 원본 PDF 로컬 1쪽이다. 통합 업로드 페이지 번호를 추정하지 않는다.","source_text는 제공된 파싱 텍스트의 셀/문장이다. 부재 필드는 원문 문자열을 만들지 않고 빈 칸과 별도 사유를 남긴다.","금액은 통화를 별도 보존한 십진 문자열, 수량은 정수, 식별자는 문자열로 보존한다.","원본 PDF·DRAFT·운영 코드·설정은 수정하지 않는다."]
+}

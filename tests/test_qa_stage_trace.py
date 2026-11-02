@@ -336,7 +336,7 @@ def test_excessive_manifest_size_is_safely_rejected(tmp_path):
     assert json.loads(proc.stdout)["status"] == "FAIL"
 
 
-def test_stage_path_symlink_outside_evidence_directory_is_rejected(tmp_path):
+def test_stage_path_symlink_outside_evidence_directory_is_rejected(tmp_path, requires_symlink):
     evidence_dir = tmp_path / "evidence"
     evidence_dir.mkdir()
     outside = tmp_path / "outside.json"

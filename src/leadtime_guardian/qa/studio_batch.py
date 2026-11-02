@@ -47,7 +47,8 @@ def audit_studio_case_batch(
         return answer
     if report.get("schema_version") != OBSERVATION_VERSION:
         flag("UNSUPPORTED_BATCH_SCHEMA", "schema_version")
-    if report.get("provenance_level") not in SUPPORTED_EVIDENCE:
+    provenance_level = report.get("provenance_level")
+    if not isinstance(provenance_level, str) or provenance_level not in SUPPORTED_EVIDENCE:
         flag("UNVERIFIED_BATCH_OBSERVATION_SOURCE", "provenance_level")
     if (not isinstance(expected_case_id, str) or not expected_case_id.strip()
             or report.get("case_id") != expected_case_id):

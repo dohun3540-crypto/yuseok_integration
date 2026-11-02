@@ -1,0 +1,37 @@
+{
+  "checked_code_head": "21bff34a254a7d24295357ac745f418de03366be",
+  "run_id": 41450548344,
+  "url": "https://github.com/dohun3540-crypto/yuseok_integration/actions/runs/41450548344",
+  "status": "completed",
+  "conclusion": "success",
+  "job_id": 125294380084,
+  "environment": "ubuntu-latest / Python 3.11.17",
+  "pytest": {
+    "passed": 739,
+    "failed": 0,
+    "skipped": 0
+  },
+  "ruff": "PASS",
+  "archive_and_local_gate": "PASS_LOCAL; release remains BLOCKED",
+  "pdf_inventory": {
+    "passed": 60,
+    "failed": 0,
+    "blocked": 0
+  },
+  "live_studio_runs_started": 0,
+  "studio_native_e2e": "NOT_VERIFIED",
+  "human_gold": "BLOCKED",
+  "source_ci": {
+    "team2": {
+      "sha": "e9b9992b593a42d427ff1bbadeb9a9866ca593bd",
+      "conclusion": "success",
+      "url": "https://github.com/dohun3540-crypto/leadtime-guardian-agent/actions/runs/41265874061"
+    },
+    "team3": {
+      "sha": "a925103077173b37d1cefcd6a9576ae644dc2040",
+      "conclusion": "success",
+      "url": "https://github.com/dohun3540-crypto/leadtime-guardian-agent/actions/runs/41374031831"
+    },
+    "qa_baseline": "No workflow runs in target repository at copied SHA; original copy repository inaccessible"
+  }
+}

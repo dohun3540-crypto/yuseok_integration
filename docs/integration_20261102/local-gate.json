@@ -1,0 +1,64 @@
+{
+  "checks": {
+    "c001_archive_integrity": {
+      "evidence_type": "LOCAL_CHECK",
+      "issues": [],
+      "status": "PASS"
+    },
+    "c001_native_envelope": {
+      "evidence_type": "LOCAL_ARCHIVED_CONTRACT_ONLY",
+      "issues": [],
+      "status": "PASS"
+    },
+    "c001_offline_replay": {
+      "evidence_type": "LOCAL_CHECK",
+      "issues": [],
+      "status": "PASS"
+    },
+    "independent_qa_ci_at_current_sha": {
+      "evidence_type": "EXTERNAL_REQUIREMENT_NOT_EXECUTED",
+      "reason": "A local audit cannot query the current GitHub Actions conclusion",
+      "status": "NOT_RUN"
+    },
+    "measured_extraction_accuracy": {
+      "evidence_type": "EXTERNAL_REQUIREMENT_NOT_EXECUTED",
+      "reason": "No independent human Gold accuracy basis",
+      "status": "NOT_VERIFIED"
+    },
+    "new_live_c013": {
+      "evidence_type": "EXTERNAL_REQUIREMENT_NOT_EXECUTED",
+      "reason": "C013 requires a new independently recorded Studio execution",
+      "status": "NOT_RUN"
+    },
+    "new_live_c017": {
+      "evidence_type": "EXTERNAL_REQUIREMENT_NOT_EXECUTED",
+      "reason": "C017 requires a new independently recorded Studio execution",
+      "status": "NOT_RUN"
+    },
+    "python_ci_at_current_sha": {
+      "evidence_type": "EXTERNAL_REQUIREMENT_NOT_EXECUTED",
+      "reason": "A local audit cannot query the current GitHub Actions conclusion",
+      "status": "NOT_RUN"
+    },
+    "source_snapshot_vs_upstream": {
+      "evidence_type": "EXTERNAL_REQUIREMENT_NOT_EXECUTED",
+      "reason": "Requires an independent upstream Git SHA comparison",
+      "status": "NOT_VERIFIED"
+    },
+    "team2_latest_adapter": {
+      "evidence_type": "EXTERNAL_REQUIREMENT_NOT_EXECUTED",
+      "reason": "Await the team's latest integrated Adapter contract",
+      "status": "BLOCKED"
+    },
+    "team3_source_verified_gold": {
+      "evidence_type": "EXTERNAL_REQUIREMENT_NOT_EXECUTED",
+      "reason": "Await independently source-reviewed Gold",
+      "status": "BLOCKED"
+    }
+  },
+  "human_gold_verified": false,
+  "local_checks_passed": true,
+  "overall_status": "BLOCKED",
+  "release_or_merge_authorized": false,
+  "studio_runs_started": 0
+}

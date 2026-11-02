@@ -1,0 +1,84 @@
+{
+  "platform": "Windows-11-10.0.26100-SP0",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "commands": [
+    {
+      "name": "joined-replay",
+      "command": [
+        "python",
+        "-m",
+        "qa.integration",
+        "--native",
+        "data/results/studio_runs/C001_20261030_v4/instruct_original.json",
+        "--trusted-base",
+        "data/cases/SYN-C001/trusted_base_case.json",
+        "--candidate",
+        "qa/gold_candidates/SYN-C001/candidate.v1.json",
+        "--case-id",
+        "C001",
+        "--job-id",
+        "job_gPmEYKzuJdBA6BmKhVnujs",
+        "--github-sha",
+        "ece3a7dcc254b5c7a14c72792750170346419eb8"
+      ],
+      "exit_code": 2,
+      "output": "{\n  \"status\": \"BLOCKED\",\n  \"scope\": \"READ_ONLY_LOCAL_REPLAY\",\n  \"studio_native_e2e\": \"NOT_VERIFIED\",\n  \"human_gold\": \"BLOCKED\",\n  \"accuracy_status\": \"NOT_MEASURED\",\n  \"release_or_merge_authorized\": false,\n  \"external_action_taken\": false,\n  \"sha256\": {\n    \"native\": \"88387f8d6aee1421c9f628304c6b91811396b32da297d41b40e3d53c3d98dfea\",\n    \"base\": \"601f52d293e0e118cd49723660fa6217473186d1000a7d565eadb21c28c6e7cb\",\n    \"schema\": \"cfdac60441e46e853644b1204dc7b6d65937cfe28bab89d882461086d2e087c4\",\n    \"candidate\": \"c96468674701b1336aa981260ce3c1afba8df70a90652a87ab2796ae609e1103\"\n  },\n  \"issues\": [\n    \"HUMAN_REVIEW_RECORDS_NOT_PROVIDED\",\n    \"REVIEWED_XLSX_NOT_PROVIDED\"\n  ],\n  \"inventory\": {\n    \"counts\": {\n      \"PASS\": 60,\n      \"FAIL\": 0,\n      \"BLOCKED\": 0\n    },\n    \"archive_sha256\": \"a3f4ed1cefee4ebea3a4b94f9408f8a039bf042bd651a3a9222a5162c22149dc\",\n    \"duplicate_hashes\": {}\n  },\n  \"combined\": {\n    \"status\": \"BLOCKED\",\n    \"single_case_grouping_status\": \"NATIVE_THREE_DOCUMENT_CONTRACT_PASS\",\n    \"provenance_link_status\": \"NOT_VERIFIED\",\n    \"experiment_comparison_allowed\": false,\n    \"python_business_status\": \"COMPLETED\",\n    \"python_safety_status\": \"PASS_LOCAL\",\n    \"studio_document_status\": \"NOT_VERIFIED\",\n    \"cross_agent_status\": \"BLOCKED\",\n    \"same_original_pdf_bytes_verified\": false,\n    \"actual_studio_e2e_status\": \"NOT_VERIFIED\",\n    \"release_or_merge_authorized\": false,\n    \"external_action_taken\": false,\n    \"issues\": [\n      {\n        \"issue_code\": \"QA_STUDIO_RAW_ARTIFACTS_NOT_PROVIDED\",\n        \"stage\": \"studio_qa\"\n      }\n    ],\n    \"sha256\": {\n      \"operational_native\": \"88387f8d6aee1421c9f628304c6b91811396b32da297d41b40e3d53c3d98dfea\"\n    },\n    \"python_summary\": {\n      \"case_id\": \"SYN-C001\",\n      \"execution_status\": \"COMPLETED\",\n      \"review_flags\": [],\n      \"baseline_shortage_quantity\": 0,\n      \"changed_shortage_quantity\": 60,\n      \"estimated_quote_cost_krw\": \"60500.00\",\n      \"evidence_verified_against_pdf\": false\n    }\n  },\n  \"candidate\": {\n    \"status\": \"LOCAL_CANDIDATE_MATCH\",\n    \"candidate_label_status\": \"AI_CANDIDATE\",\n    \"source_binding_status\": \"PASS_LOCAL\",\n    \"source_binding_failures\": [],\n    \"differences\": [],\n    \"scope\": \"Candidate fields only; evidence/warning accuracy is not measured\",\n    \"gold_promoted\": false,\n    \"official_metrics_eligible\": false,\n    \"accuracy_status\": \"NOT_MEASURED\"\n  }\n}\n"
+    },
+    {
+      "name": "case-regressions",
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_qa_combined_v6_contract.py"
+      ],
+      "exit_code": 0,
+      "output": ".....                                                                    [100%]\n5 passed in 0.37s\n"
+    },
+    {
+      "name": "ruff",
+      "command": [
+        "python",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "output": "All checks passed!\n"
+    }
+  ],
+  "full_pytest": {
+    "command": "python -m pytest -q -rs --basetemp=../tmp/leadtime-full-final-1 --junitxml=../tmp/leadtime-integration-evidence/pytest-final.xml",
+    "exit_code": 0,
+    "passed": 734,
+    "skipped": 5,
+    "failed": 0,
+    "skip_reason": "Windows symlink privilege; Linux CI required"
+  },
+  "red_test": {
+    "command": "python -m pytest -q tests/test_integration_json_boundaries.py",
+    "exit_code": 1,
+    "failed": 4,
+    "reason": "numeric exponent overflow accepted before patch"
+  },
+  "green_test": {
+    "exit_code": 0,
+    "passed": 56,
+    "scope": "overflow plus imported PR16 JSON type tests and baseline type tests"
+  },
+  "initial_import_run": {
+    "failed": 26,
+    "passed": 695,
+    "skipped": 1,
+    "reason": "CRLF hash changes, restricted loopback, Windows symlink privileges, locale encoding"
+  },
+  "baseline_default_temp_run": {
+    "failed": 5,
+    "passed": 489,
+    "errors": 136,
+    "reason": "default temporary directory permissions; not a product-pass claim"
+  },
+  "provenance_note": "Local tests ran in the integration working tree based on ece3a7d before implementation commit 21bff34. The CLI github-sha argument was the baseline identifier, not a claim that changes existed at baseline. Exact committed code is validated in CI_RESULT.json."
+}
