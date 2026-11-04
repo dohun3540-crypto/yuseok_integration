@@ -135,7 +135,7 @@ def test_provenance_cli_reports_blocked_not_pass(tmp_path):
     assert json.loads(process.stdout)["same_local_pdf_bytes_verified"] is True
 
 
-def test_symlinked_pdf_escape_from_trusted_root_is_rejected(tmp_path):
+def test_symlinked_pdf_escape_from_trusted_root_is_rejected(tmp_path, requires_symlink):
     pdf_root = tmp_path / "pdf_root"
     pdf_root.mkdir()
     outside = tmp_path / "outside.pdf"

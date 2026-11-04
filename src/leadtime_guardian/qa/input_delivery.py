@@ -6,7 +6,6 @@ report the path/encoding, without authenticating the Studio provider.
 """
 from __future__ import annotations
 
-import json
 import math
 from typing import Any
 
@@ -53,36 +52,39 @@ def _read_documents(value: Any, *, qa_side: bool) -> tuple[Any, str | None, str,
     return None, "WRAPPER_DEPTH_EXCEEDED", path, encodings
 
 
-def _is_strict_json_tree(value: Any) -> bool:
-    """Reject non-JSON types and object keys before JSON serialization.
+def _compare_json(left: Any, right: Any) -> bool:
+    """Compare valid JSON values exactly, preserving Python JSON types.
 
-    json.dumps silently encodes tuples as arrays and int keys as strings;
-    those are not valid original JSON payloads and must not compare equal.
+    Only dicts with string keys and JSON primitives/arrays are accepted. A
+    Python tuple must not silently compare equal to a JSON list, nor should
+    non-string dict keys be coerced to strings by serialization. This remains
+    local content evidence, not authentication of Studio cloud delivery.
     """
-    if type(value) is dict:
-        return all(
-            type(key) is str and _is_strict_json_tree(item)
-            for key, item in value.items()
+    if type(left) is not type(right):
+        return False
+    if type(left) is dict:
+        if any(type(key) is not str for key in left):
+            return False
+        if any(type(key) is not str for key in right):
+            return False
+        return left.keys() == right.keys() and all(
+            _compare_json(value, right[key]) for key, value in left.items()
         )
-    if type(value) is list:
-        return all(_is_strict_json_tree(item) for item in value)
-    if type(value) is float:
-        return math.isfinite(value)
-    return value is None or type(value) in (str, int, bool)
-
+    if type(left) is list:
+        return len(left) == len(right) and all(
+            _compare_json(a, b) for a, b in zip(left, right, strict=True)
+        )
+    if type(left) is float:
+        return (math.isfinite(left) and math.isfinite(right) and left == right
+                and math.copysign(1, left) == math.copysign(1, right))
+    if left is None or type(left) in (str, int, bool):
+        return left == right
+    return False
 
 def _typed_json_equal(left: Any, right: Any) -> bool:
-    """Compare canonical JSON without implicitly converting Python-only types."""
+    """Fail closed on cyclic/deep non-JSON inputs as well as type changes."""
     try:
-        if not (_is_strict_json_tree(left) and _is_strict_json_tree(right)):
-            return False
-        return json.dumps(
-            left, sort_keys=True, separators=(",", ":"),
-            ensure_ascii=False, allow_nan=False,
-        ) == json.dumps(
-            right, sort_keys=True, separators=(",", ":"),
-            ensure_ascii=False, allow_nan=False,
-        )
+        return _compare_json(left, right)
     except (TypeError, ValueError, RecursionError):
         return False
 

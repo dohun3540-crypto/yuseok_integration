@@ -1,0 +1,4 @@
+# Evidence hashes refer to Git blob bytes, even on Windows with autocrlf.
+data/** -text
+configs/** -text
+qa/gold_candidates/** -text

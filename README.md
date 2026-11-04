@@ -1,5 +1,10 @@
 # LeadTime Guardian Agent
 
+2026-11-02 통합 검수: **[V6·Independent QA·데이터/Gold 통합 보고서](docs/integration_20261102/INTEGRATION_REPORT.md)**.
+전체 검증 환경은 `python -m pip install -r requirements-validation.txt`로 설치합니다.
+통합 실행은 `python -m qa.integration --help`를 참고하세요. GitHub 코드 검증과
+최신 Studio Native E2E·사람 Gold 승인은 별도 Gate입니다.
+
 환경 이전 및 개발 재개: **[Chrome Work 인계 문서](docs/WORK_HANDOFF.md)**.
 
 **대구·울산·경북 대학 연합 X Upstage AI Agent Hackathon V.2**  

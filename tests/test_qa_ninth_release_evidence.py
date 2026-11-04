@@ -73,7 +73,7 @@ def test_changed_original_after_manifest_is_fail_closed(tmp_path):
     }
 
 
-def test_symlink_outside_manifest_folder_fails(tmp_path):
+def test_symlink_outside_manifest_folder_fails(tmp_path, requires_symlink):
     root = tmp_path / "pack"
     root.mkdir()
     outside = tmp_path / "external.json"
@@ -235,7 +235,7 @@ def test_preexisting_second_report_rolls_back_first_without_touching_original(
 
 
 def test_reports_with_alias_paths_resolve_to_same_file_and_are_rejected(
-    tmp_path,
+    tmp_path, requires_symlink,
 ):
     source = manifest(tmp_path)
     target = tmp_path / "reports"

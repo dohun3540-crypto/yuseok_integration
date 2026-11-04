@@ -1,0 +1,1 @@
+case_id,document_id,source_filename,source_file_sha256,page,line_or_table_location,field_path,source_original_text,normalized_candidate_json,draft_value_json,draft_match,ambiguity,reviewer,reviewed_at,decision,approval_state,gold_version,gold_sha256

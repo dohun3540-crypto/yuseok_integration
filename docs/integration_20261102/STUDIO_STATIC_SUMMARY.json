@@ -1,0 +1,448 @@
+{
+  "qa_status": "FAIL_STATIC_CONTRACT",
+  "issues": [],
+  "conflict_count": 68,
+  "observed_branches": [
+    "Extract_delivery_notice",
+    "Extract_other",
+    "Extract_purchase_order",
+    "Extract_quotation"
+  ],
+  "studio_nullable_support_verified": false,
+  "published_config_verified": false,
+  "live_run_verified": false,
+  "no_source_data_modified": true,
+  "gold_accuracy_verified": false,
+  "known_value_policy": {
+    "json_null": "ACCEPT_ONLY_IF_EXPLICITLY_ALLOWED_BY_STAGE_SCHEMA",
+    "absent": "NOT_EQUIVALENT_TO_NULL",
+    "empty_string": "NOT_EQUIVALENT_TO_NULL",
+    "quoted_null": "NOT_EQUIVALENT_TO_NULL",
+    "numeric_zero": "PRESERVE_ZERO",
+    "string_zero": "NOT_SILENTLY_COERCED",
+    "negative_quantity": "BLOCK_IF_UNSAFE"
+  },
+  "source_sha256": "931933760e35799f88c4272bbd0c1d1b9503ca2dea9e552ac70823b5a6a0abe9",
+  "kind": "studio.workflow-config-draft",
+  "exportedAt": "2026-11-01T17:06:51.261Z",
+  "exportedFrom": {
+    "workflowId": "agt_SKBQWBYeuMxZuUNH4zfmd7",
+    "workflowName": "LeadTime Guardian - B+C3 V6 개선 후보",
+    "configId": "cfg_iqQJTyc6PDK9Ym9s2bAEAm",
+    "configVer": 2
+  },
+  "edges_equal_to_v4": true,
+  "parse_equal_to_v4": true,
+  "normalize_prompt_characters": 6717,
+  "baseline_prompt_characters": 1788,
+  "conflicts": [
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "document_id",
+      "declared_type": "string",
+      "null_hint": "GENERIC"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "document_type",
+      "declared_type": "string",
+      "null_hint": "GENERIC"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "po_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "supplier_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "original_delivery",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "revised_delivery",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "items",
+      "declared_type": "array",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "quote",
+      "declared_type": "array",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "quote.quote_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "quote.supplier_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "quote.product_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "quote.capacity",
+      "declared_type": "integer",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "quote.arrival_date",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "quote.unit_price",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "quote.shipping_cost",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "quote.currency",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_purchase_order",
+      "field_path": "evidence",
+      "declared_type": "array",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "document_id",
+      "declared_type": "string",
+      "null_hint": "GENERIC"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "document_type",
+      "declared_type": "string",
+      "null_hint": "GENERIC"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "po_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "supplier_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "original_delivery",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "revised_delivery",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "items",
+      "declared_type": "array",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "quote",
+      "declared_type": "array",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "quote.quote_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "quote.supplier_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "quote.product_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "quote.capacity",
+      "declared_type": "integer",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "quote.arrival_date",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "quote.unit_price",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "quote.shipping_cost",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "quote.currency",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_delivery_notice",
+      "field_path": "evidence",
+      "declared_type": "array",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "document_id",
+      "declared_type": "string",
+      "null_hint": "GENERIC"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "document_type",
+      "declared_type": "string",
+      "null_hint": "GENERIC"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "po_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "supplier_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "original_delivery",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "revised_delivery",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "items",
+      "declared_type": "array",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "quote",
+      "declared_type": "array",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "quote.quote_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "quote.supplier_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "quote.product_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "quote.capacity",
+      "declared_type": "integer",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "quote.arrival_date",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "quote.unit_price",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "quote.shipping_cost",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "quote.currency",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_quotation",
+      "field_path": "evidence",
+      "declared_type": "array",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "document_id",
+      "declared_type": "string",
+      "null_hint": "GENERIC"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "document_type",
+      "declared_type": "string",
+      "null_hint": "GENERIC"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "po_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "supplier_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "original_delivery",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "revised_delivery",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "items",
+      "declared_type": "array",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "quote",
+      "declared_type": "array",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "quote.quote_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "quote.supplier_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "quote.product_id",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "quote.capacity",
+      "declared_type": "integer",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "quote.arrival_date",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "quote.unit_price",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "quote.shipping_cost",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "quote.currency",
+      "declared_type": "string",
+      "null_hint": "EXPLICIT"
+    },
+    {
+      "extract_branch": "Extract_other",
+      "field_path": "evidence",
+      "declared_type": "array",
+      "null_hint": "EXPLICIT"
+    }
+  ]
+}
